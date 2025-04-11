@@ -1,0 +1,2 @@
+[flake8]
+exclude = migrations, .git, __pycache__, build, .pytest_cache, manage.py, settings.py
