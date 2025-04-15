@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "core",  # Custom app for core functionality
     "rest_framework",  # Django REST framework for API development
+    "rest_framework.authtoken",  # Token authentication for DRF
     "drf_spectacular",  # OpenAPI schema generation
+    "user",
 ]
 
 MIDDLEWARE = [
