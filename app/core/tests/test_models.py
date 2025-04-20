@@ -19,7 +19,8 @@ class ModelTests(TestCase):
     def test_create_user_with_email_successfull(self):
         email = "test@example.com"
         password = "test123"
-        user = get_user_model().objects.create_user(email=email, password=password)
+        user = get_user_model().objects.\
+            create_user(email=email, password=password)
         self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
         self.assertTrue(user.is_active)
@@ -68,7 +69,8 @@ class ModelTests(TestCase):
 
     def test_create_ingredient_successful(self):
         user = create_user()
-        ingredient = models.Ingredient.objects.create(user=user, name="Cucumber")
+        ingredient = models.Ingredient.\
+            objects.create(user=user, name="Cucumber")
         self.assertEqual(str(ingredient), ingredient.name)
 
     @patch("uuid.uuid4")

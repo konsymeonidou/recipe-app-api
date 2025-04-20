@@ -50,7 +50,8 @@ class AuthTokenSerializer(serializers.Serializer):
         password = attrs.get("password")
 
         if not email or not password:
-            raise serializers.ValidationError("Email and password are required")
+            raise serializers.ValidationError
+        ("Email and password are required")
 
         user = authenticate(
             request=self.context.get("request"),
