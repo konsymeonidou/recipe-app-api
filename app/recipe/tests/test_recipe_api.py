@@ -3,10 +3,10 @@ Tests for recipe APIs
 """
 
 from decimal import Decimal
-import tempfile
-import os
+# import tempfile
+# import os
 
-from PIL import Image
+# from PIL import Image
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
@@ -419,7 +419,8 @@ class PrivateRecipeAPITests(TestCase):
 
 #     def setUp(self):
 #         self.client = APIClient()
-#         self.user = create_user(email="user@example.com", password="testpass")
+#         self.user = create_user(
+# email="user@example.com", password="testpass")
 #         self.client.force_authenticate(self.user)
 #         self.recipe = create_recipe(user=self.user)
 
