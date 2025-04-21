@@ -120,20 +120,20 @@ class PrivateTagApiTests(TestCase):
         self.assertIn(serializer1.data, res.data)
         self.assertNotIn(serializer2.data, res.data)
 
-    def test_filter_tags_unique(self):
-        """Test filtered tags return a unique list."""
-        tag = create_tag(user=self.user, name="Breakfast")
-        create_tag(user=self.user, name="Lunch")
+    def test_filtered_tags_unique(self):
+        """Test filtered tags returns a unique list."""
+        tag = Tag.objects.create(user=self.user, name="Breakfast")
+        Tag.objects.create(user=self.user, name="Dinner")
         recipe1 = Recipe.objects.create(
             title="Pancakes",
-            time_minutes=10,
+            time_minutes=5,
             price=Decimal("5.00"),
             user=self.user,
         )
         recipe2 = Recipe.objects.create(
-            title="Omelette",
-            time_minutes=15,
-            price=Decimal("7.00"),
+            title="Porridge",
+            time_minutes=3,
+            price=Decimal("2.00"),
             user=self.user,
         )
         recipe1.tags.add(tag)

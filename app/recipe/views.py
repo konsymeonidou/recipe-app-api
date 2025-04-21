@@ -62,11 +62,11 @@ class RecipeViewSet(viewsets.ModelViewSet):
         ingredients = self.request.query_params.get("ingredients")
         queryset = self.queryset
         if tags:
-            tags = self._params_to_ints(tags)
-            queryset = self.queryset.filter(tags__id__in=tags)
+            tags_ids = self._params_to_ints(tags)
+            queryset = self.queryset.filter(tags__id__in=tags_ids)
         if ingredients:
-            ingredients = self._params_to_ints(ingredients)
-            queryset = self.queryset.filter(ingredients__id__in=ingredients)
+            ingredients_ids = self._params_to_ints(ingredients)
+            queryset = self.queryset.filter(ingredients__id__in=ingredients_ids)
         return queryset.filter(
             user=self.request.user
             ).order_by("-id").distinct()
@@ -124,7 +124,9 @@ class BaseRecipeAttrViewSet(
         queryset = self.queryset
         if assigned_only:
             queryset = queryset.filter(recipe__isnull=False)
-        return queryset.filter(user=self.request.user).order_by("-name")
+        return queryset.filter(
+            user=self.request.user
+            ).order_by("-name").distinct()
 
 
 class TagViewSet(BaseRecipeAttrViewSet):
