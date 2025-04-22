@@ -12,10 +12,42 @@ The course teaches how to build a fully functioning REST API using:
 
 ## Getting started
 
-To start project, run:
+- To start project, run:
 
 ```
-docker-compose up
+docker compose up
 ```
 
 The API will then be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+You can see all the endpoints at [http://127.0.0.1:8000/api/docs/](http://127.0.0.1:8000/api/docs/)
+Write "Token <token>" to authenticate on the api browser
+
+
+- Fix and lint the project using flake8
+
+```
+docker compose run --rm app sh -c "flake8"
+```
+
+
+- If you want to run the tests
+
+```
+docker compose run --rm app sh -c "python manage.py test"
+```
+
+
+- During development run the following commands to create new directory and apply the migrations every time a model is inserted or updated
+
+```
+docker compose run --rm app sh -c "django-admin startproject app ."
+docker compose run --rm app sh -c "python manage.py makemigrations"
+docker compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"
+```
+
+
+- To create a superuser through terminal
+
+```
+docker compose run --rm app sh -c "python manage.py createsuperuser"
+```
