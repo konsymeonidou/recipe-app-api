@@ -18,9 +18,9 @@ The course teaches how to build a fully functioning REST API using:
 docker compose up
 ```
 
-The API will then be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
-You can see all the endpoints at [http://127.0.0.1:8000/api/docs/](http://127.0.0.1:8000/api/docs/)
-Write "Token <token>" to authenticate on the api browser
+    - The API will then be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+    - You can see all the endpoints at [http://127.0.0.1:8000/api/docs/](http://127.0.0.1:8000/api/docs/)
+    - To authenticate on the API browser, use: `Token <token>`
 
 
 - Fix and lint the project using flake8
